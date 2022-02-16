@@ -27,6 +27,7 @@ import android.widget.TextView
         timeLeftTextView = findViewById(R.id.time_left_text_view)
         tapMeButton = findViewById(R.id.tap_me_button)
         tapMeButton.setOnClickListener { incrementScore() }
+        resetGame()
     }
 
     private fun incrementScore(){
@@ -44,6 +45,19 @@ import android.widget.TextView
 
         val initialTimeLeft = getString(R.string.time_left, 60)
         timeLeftTextView.text = initialTimeLeft
+
+        countDownTimer = object: CountDownTimer(initialCountdown, countDownInterval){
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished.toInt()
+                val timeLeftString = getString(R.string.time_left, timeLeft)
+            }
+
+            override fun onFinish() {
+                //to be implemented later
+            }
+        }
+
+        gameStarted = false
     }
 
     private fun endGame(){
