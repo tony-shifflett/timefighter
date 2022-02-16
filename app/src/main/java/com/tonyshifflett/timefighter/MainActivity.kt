@@ -16,7 +16,7 @@ import android.widget.TextView
     //countdown
     private var gameStarted = false
     private lateinit var countDownTimer: CountDownTimer
-    private var initialCountdown: Long = 6000
+    private var initialCountdown: Long = 60000
     private var countDownInterval: Long = 1000
     private var timeLeft = 60
 
@@ -31,6 +31,10 @@ import android.widget.TextView
     }
 
     private fun incrementScore(){
+
+        if (!gameStarted){
+            startGame()
+        }
         //increment score logic
         score++
         val newScore = getString(R.string.your_score, score)
@@ -48,8 +52,9 @@ import android.widget.TextView
 
         countDownTimer = object: CountDownTimer(initialCountdown, countDownInterval){
             override fun onTick(millisUntilFinished: Long) {
-                timeLeft = millisUntilFinished.toInt()
+                timeLeft = millisUntilFinished.toInt()/1000
                 val timeLeftString = getString(R.string.time_left, timeLeft)
+                timeLeftTextView.text = timeLeftString
             }
 
             override fun onFinish() {
