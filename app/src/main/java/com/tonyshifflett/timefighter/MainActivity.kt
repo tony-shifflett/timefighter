@@ -60,6 +60,11 @@ import android.widget.TextView
         gameStarted = false
     }
 
+    private fun startGame(){
+        countDownTimer.start()
+        gameStarted = true
+    }
+
     private fun endGame(){
         //end game logic
     }
