@@ -37,7 +37,13 @@ import android.widget.TextView
     }
 
     private fun resetGame(){
-        //reset game logic
+        score = 0
+
+        val initialScore = getString(R.string.your_score, score)
+        gameScoreTextView.text = initialScore
+
+        val initialTimeLeft = getString(R.string.time_left, 60)
+        timeLeftTextView.text = initialTimeLeft
     }
 
     private fun endGame(){
