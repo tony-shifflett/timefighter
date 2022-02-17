@@ -3,10 +3,14 @@
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
  class MainActivity : AppCompatActivity() {
+
+    private val TAG = MainActivity::class.java.simpleName
     //view properties
     private lateinit var gameScoreTextView: TextView
     private lateinit var timeLeftTextView: TextView
@@ -23,6 +27,7 @@ import android.widget.TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(TAG, "onCreate called. Socre is: $score")
         gameScoreTextView = findViewById(R.id.game_score_text_view)
         timeLeftTextView = findViewById(R.id.time_left_text_view)
         tapMeButton = findViewById(R.id.tap_me_button)
@@ -59,6 +64,7 @@ import android.widget.TextView
 
             override fun onFinish() {
                 //to be implemented later
+                endGame()
             }
         }
 
@@ -72,5 +78,7 @@ import android.widget.TextView
 
     private fun endGame(){
         //end game logic
+        Toast.makeText(this, getString(R.string.game_over_message, score), Toast.LENGTH_LONG).show()
+        resetGame()
     }
 }
