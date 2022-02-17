@@ -81,4 +81,9 @@ import android.widget.Toast
         Toast.makeText(this, getString(R.string.game_over_message, score), Toast.LENGTH_LONG).show()
         resetGame()
     }
+
+    companion object {
+        private const val SCORE_KEY = "SCORE_KEY"
+        private const val TIME_LEFT_KEY = "TIME_LEFT_KEY"
+    }
 }
