@@ -4,4 +4,6 @@
     <string name="your_score">Your score: %1$d</string>
     <string name="time_left">Time left: %1$d</string>
     <string name="game_over_message">Time\'s up! Your score was: %1$d</string>
+    <string name="about_title">Timefigher %1$s</string>
+    <string name="about_message">Created by Tony Shifflett</string>
 </resources>
